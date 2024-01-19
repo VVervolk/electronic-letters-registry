@@ -5,9 +5,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 import AppOrderTimeline from '../app-order-timeline';
-import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
+import AppConversionRates from '../app-conversion-rates';
 
 // ----------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ export default function AppView() {
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
-        Hi, Welcome back 👋
+        Доброго дня 👋
       </Typography>
 
       <Grid container spacing={3}>
@@ -52,6 +52,30 @@ export default function AppView() {
             total={234}
             color="error"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
+          />
+        </Grid>
+
+        <Grid xs={12} md={6} lg={12}>
+          <AppConversionRates
+            title="Викорастано коштів"
+            // subheader="(+43%) than last year"
+            chart={{
+              series: [
+                { label: 'ГУНП', value: 400 },
+                { label: 'Голосіївське', value: 400 },
+                { label: 'Дарницьке', value: 430 },
+                { label: 'Деснянське', value: 448 },
+                { label: 'Дніпровське', value: 470 },
+                { label: 'Оболонське', value: 540 },
+                { label: 'Печерське', value: 580 },
+                { label: 'Подільське', value: 690 },
+                { label: 'Святошинське ', value: 1100 },
+                { label: "Солом'янське", value: 1200 },
+                { label: 'Шевченківське', value: 1380 },
+                { label: 'УП в метрополітені', value: 1380 },
+                { label: 'ВП в річковому порту', value: 1380 },
+              ],
+            }}
           />
         </Grid>
 
@@ -92,20 +116,6 @@ export default function AppView() {
                   fill: 'solid',
                   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                 },
-              ],
-            }}
-          />
-        </Grid>
-
-        <Grid xs={12} md={6} lg={4}>
-          <AppCurrentVisits
-            title="Current Visits"
-            chart={{
-              series: [
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
               ],
             }}
           />

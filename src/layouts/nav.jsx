@@ -80,7 +80,19 @@ export default function Nav({ openNav, onCloseNav }) {
         },
       }}
     >
-      <Logo sx={{ mt: 3, ml: 4 }} />
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingTop: '16px',
+          paddingBottom: '16px',
+          gap: '8px',
+        }}
+      >
+        <Logo />
+        <Typography variant="subtitle1">Електроний реєстр листів</Typography>
+      </Box>
 
       {renderAccount}
 

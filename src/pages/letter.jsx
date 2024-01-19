@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-import { UserView } from 'src/sections/user/view';
+import LetterView from 'src/sections/letter/LetterView';
 
 // ----------------------------------------------------------------------
 
@@ -8,10 +8,10 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> Користувачі | ЕРЛ </title>
+        <title> Листи | ЕРЛ </title>
       </Helmet>
 
-      <UserView />
+      <LetterView />
     </>
   );
 }

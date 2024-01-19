@@ -24,6 +24,10 @@ export default defineConfig({
         find: /^src(.+)/,
         replacement: path.join(process.cwd(), 'src/$1'),
       },
+      {
+        find: /^public(.+)/,
+        replacement: path.join(process.cwd(), 'public/$1'),
+      },
     ],
   },
   server: {

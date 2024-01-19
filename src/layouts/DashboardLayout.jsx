@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 
 import Nav from './nav';
 import Main from './main';
-import Header from './header';
+import Header from './Header/header';
 
 // ----------------------------------------------------------------------
 

@@ -8,7 +8,7 @@ export default function AppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> Головна | ЕРЛ </title>
       </Helmet>
 
       <AppView />
