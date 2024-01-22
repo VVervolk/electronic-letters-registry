@@ -5,6 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Popover from '@mui/material/Popover';
 import { alpha } from '@mui/material/styles';
+import { Logout } from '@mui/icons-material';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -106,9 +107,10 @@ export default function AccountPopover() {
           disableRipple
           disableTouchRipple
           onClick={handleClose}
-          sx={{ typography: 'body2', color: 'error.main', py: 1.5 }}
+          sx={{ typography: 'body2', color: 'error.main', py: 1.5, gap: '8px' }}
         >
-          Logout
+          <Logout />
+          Вийти
         </MenuItem>
       </Popover>
     </>

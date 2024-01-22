@@ -7,15 +7,15 @@ import TableHead from '@mui/material/TableHead';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
 
-import { visuallyHidden } from './utils';
+import { visuallyHidden } from '../../sections/user/utils';
 
 // ----------------------------------------------------------------------
 
-export default function UserTableHead({
+export default function CustomTableHead({
   order,
   orderBy,
   rowCount,
-  headLabel,
+  url,
   numSelected,
   onRequestSort,
   onSelectAllClick,
@@ -23,6 +23,23 @@ export default function UserTableHead({
   const onSort = (property) => (event) => {
     onRequestSort(event, property);
   };
+
+  const headLabel =
+    url === '/user'
+      ? [
+          { id: 'unit', label: 'Підрозділ' },
+          { id: 'name', label: "Ім'я" },
+          { id: 'role', label: 'Посада' },
+          { id: '' },
+        ]
+      : [
+          { id: 'unit', label: 'Підрозділ' },
+          { id: 'number', label: 'Вих.номер' },
+          { id: 'name', label: "Ім'я" },
+          { id: 'address', label: 'Адреса' },
+          { id: 'status', label: 'Статус' },
+          { id: '' },
+        ];
 
   return (
     <TableHead>
@@ -37,6 +54,7 @@ export default function UserTableHead({
 
         {headLabel.map((headCell) => (
           <TableCell
+            padding={url === '/user' ? 'normal' : 'none'}
             key={headCell.id}
             align={headCell.align || 'left'}
             sortDirection={orderBy === headCell.id ? order : false}
@@ -62,11 +80,11 @@ export default function UserTableHead({
   );
 }
 
-UserTableHead.propTypes = {
+CustomTableHead.propTypes = {
   order: PropTypes.oneOf(['asc', 'desc']),
   orderBy: PropTypes.string,
   rowCount: PropTypes.number,
-  headLabel: PropTypes.array,
+  url: PropTypes.string,
   numSelected: PropTypes.number,
   onRequestSort: PropTypes.func,
   onSelectAllClick: PropTypes.func,

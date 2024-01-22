@@ -6,22 +6,19 @@ import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import TableCell from '@mui/material/TableCell';
+import EditIcon from '@mui/icons-material/Edit';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function UserTableRow({
-  selected,
-  name,
-  company,
-  role,
-  isVerified,
-  status,
-  handleClick,
-}) {
+export default function CustomTableRow({ selected, handleClick, props }) {
+  const { name, unit, address, number, role, status } = props;
+
   const [open, setOpen] = useState(null);
 
   const handleOpenMenu = (event) => {
@@ -39,19 +36,38 @@ export default function UserTableRow({
           <Checkbox disableRipple checked={selected} onChange={handleClick} />
         </TableCell>
 
-        <TableCell>
-          <Typography variant="subtitle2" noWrap>
-            {name}
-          </Typography>
-        </TableCell>
+        {number ? (
+          <>
+            <TableCell padding="none">
+              <Typography variant="subtitle2" noWrap>
+                {unit}
+              </Typography>
+            </TableCell>
 
-        <TableCell>{company}</TableCell>
+            <TableCell padding="none">{number}</TableCell>
 
-        <TableCell>{role}</TableCell>
+            <TableCell padding="none">{name}</TableCell>
 
-        <TableCell align="right">
+            <TableCell padding="none">{address}</TableCell>
+            <TableCell padding="none">{status}</TableCell>
+          </>
+        ) : (
+          <>
+            <TableCell>
+              <Typography variant="subtitle2" noWrap>
+                {unit}
+              </Typography>
+            </TableCell>
+
+            <TableCell>{name}</TableCell>
+
+            <TableCell>{role}</TableCell>
+          </>
+        )}
+
+        <TableCell padding={number ? 'none' : 'normal'} align="right">
           <IconButton onClick={handleOpenMenu}>
-            <Iconify icon="eva:more-vertical-fill" />
+            <Iconify icon={MoreVertIcon} />
           </IconButton>
         </TableCell>
       </TableRow>
@@ -67,12 +83,12 @@ export default function UserTableRow({
         }}
       >
         <MenuItem onClick={handleCloseMenu}>
-          <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
+          <Iconify icon={EditIcon} sx={{ mr: 2 }} />
           Edit
         </MenuItem>
 
         <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
-          <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
+          <Iconify icon={DeleteIcon} sx={{ mr: 2 }} />
           Delete
         </MenuItem>
       </Popover>
@@ -80,12 +96,14 @@ export default function UserTableRow({
   );
 }
 
-UserTableRow.propTypes = {
-  company: PropTypes.any,
+CustomTableRow.propTypes = {
   handleClick: PropTypes.func,
-  isVerified: PropTypes.any,
-  name: PropTypes.any,
-  role: PropTypes.any,
   selected: PropTypes.any,
+  props: PropTypes.object,
+  name: PropTypes.any,
+  number: PropTypes.number,
+  unit: PropTypes.string,
+  address: PropTypes.string,
   status: PropTypes.string,
+  role: PropTypes.any,
 };

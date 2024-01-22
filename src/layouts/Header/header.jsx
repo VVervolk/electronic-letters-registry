@@ -6,6 +6,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
@@ -29,7 +30,7 @@ export default function Header({ onOpenNav }) {
     <>
       {!lgUp && (
         <IconButton onClick={onOpenNav} sx={{ mr: 1 }}>
-          <Iconify icon="eva:menu-2-fill" />
+          <Iconify icon={MoreVertIcon} />
         </IconButton>
       )}
 

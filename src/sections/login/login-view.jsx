@@ -12,6 +12,8 @@ import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { alpha, useTheme } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import { useRouter } from 'src/routes/hooks';
 
@@ -46,7 +48,7 @@ export default function LoginView() {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                  <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
+                  <Iconify icon={showPassword ? VisibilityIcon : VisibilityOffIcon} />
                 </IconButton>
               </InputAdornment>
             ),
