@@ -135,7 +135,7 @@ export default function CustomTable({ data }) {
         count={data.length}
         rowsPerPage={rowsPerPage}
         onPageChange={handleChangePage}
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={url === '/user' ? [5, 10, 25] : [25, 50, 100]}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Card>

@@ -17,15 +17,12 @@ import { account } from 'src/_mock/account';
 const MENU_OPTIONS = [
   {
     label: 'Home',
-    icon: 'eva:home-fill',
   },
   {
     label: 'Profile',
-    icon: 'eva:person-fill',
   },
   {
     label: 'Settings',
-    icon: 'eva:settings-2-fill',
   },
 ];
 

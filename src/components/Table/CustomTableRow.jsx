@@ -12,12 +12,14 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+import dateFormatter from 'src/helpers/dateFormatter';
+
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
 export default function CustomTableRow({ selected, handleClick, props }) {
-  const { name, unit, address, number, role, status } = props;
+  const { name, unit, address, number, role, status, date } = props;
 
   const [open, setOpen] = useState(null);
 
@@ -46,6 +48,7 @@ export default function CustomTableRow({ selected, handleClick, props }) {
 
             <TableCell padding="none">{number}</TableCell>
 
+            <TableCell padding="none">{dateFormatter(date)}</TableCell>
             <TableCell padding="none">{name}</TableCell>
 
             <TableCell padding="none">{address}</TableCell>
@@ -106,4 +109,5 @@ CustomTableRow.propTypes = {
   address: PropTypes.string,
   status: PropTypes.string,
   role: PropTypes.any,
+  date: PropTypes.object,
 };

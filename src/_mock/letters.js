@@ -23,4 +23,5 @@ export const letters = [...Array(24)].map((_, index) => ({
   number: faker.number.int({ min: 1000, max: 10000 }),
   name: faker.person.fullName(),
   address: faker.location.streetAddress(false),
+  date: faker.date.anytime(),
 }));

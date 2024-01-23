@@ -7,12 +7,17 @@ import Typography from '@mui/material/Typography';
 
 import Iconify from 'src/components/iconify';
 
-export default function HeaderOfTable({ name, action }) {
+export default function HeaderOfTable({ name, action, onClick }) {
   return (
     <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
       <Typography variant="h4">{name}</Typography>
 
-      <Button variant="contained" color="inherit" startIcon={<Iconify icon={AddIcon} />}>
+      <Button
+        onClick={onClick}
+        variant="contained"
+        color="inherit"
+        startIcon={<Iconify icon={AddIcon} />}
+      >
         {action}
       </Button>
     </Stack>
@@ -22,4 +27,5 @@ export default function HeaderOfTable({ name, action }) {
 HeaderOfTable.propTypes = {
   name: PropTypes.string,
   action: PropTypes.string,
+  onClick: PropTypes.func,
 };

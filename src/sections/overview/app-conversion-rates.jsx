@@ -36,6 +36,7 @@ export default function AppConversionRates({ title, subheader, chart, ...other }
     xaxis: {
       categories: series.map((i) => i.label),
     },
+
     ...options,
   });
 

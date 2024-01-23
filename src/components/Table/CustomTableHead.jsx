@@ -35,6 +35,7 @@ export default function CustomTableHead({
       : [
           { id: 'unit', label: 'Підрозділ' },
           { id: 'number', label: 'Вих.номер' },
+          { id: 'date', label: 'Дата' },
           { id: 'name', label: "Ім'я" },
           { id: 'address', label: 'Адреса' },
           { id: 'status', label: 'Статус' },
