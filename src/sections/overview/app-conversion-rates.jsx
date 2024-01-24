@@ -26,6 +26,13 @@ export default function AppConversionRates({ title, subheader, chart, ...other }
         },
       },
     },
+    // stroke: {
+    //   colors: ['#ff0000'],
+    // },
+    // fill: {
+    //   colors: ['#ff0000'],
+    // },
+
     plotOptions: {
       bar: {
         horizontal: true,
@@ -48,7 +55,11 @@ export default function AppConversionRates({ title, subheader, chart, ...other }
         <Chart
           dir="ltr"
           type="bar"
-          series={[{ data: chartSeries }]}
+          series={[
+            {
+              data: chartSeries,
+            },
+          ]}
           options={chartOptions}
           width="100%"
           height={464}

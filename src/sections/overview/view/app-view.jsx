@@ -12,6 +12,7 @@ import AppConversionRates from '../app-conversion-rates';
 // ----------------------------------------------------------------------
 
 export default function AppView() {
+  // const rightColor = value > 1000 ? '#ff0000' : '#006eff';
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
@@ -61,7 +62,10 @@ export default function AppView() {
             // subheader="(+43%) than last year"
             chart={{
               series: [
-                { label: 'ГУНП', value: 400 },
+                {
+                  label: 'ГУНП',
+                  value: 400,
+                },
                 { label: 'Голосіївське', value: 400 },
                 { label: 'Дарницьке', value: 430 },
                 { label: 'Деснянське', value: 448 },
