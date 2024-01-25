@@ -80,6 +80,7 @@ export default function Nav({ openNav, onCloseNav }) {
           paddingTop: '16px',
           paddingBottom: '16px',
           gap: '8px',
+          flexDirection: 'column',
         }}
       >
         <Logo />

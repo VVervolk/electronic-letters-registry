@@ -10,7 +10,6 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { alpha, useTheme } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -25,14 +24,12 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function LoginView() {
-  const theme = useTheme();
-
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => {
-    router.push('/dashboard');
+    router.push('/');
   };
 
   const renderForm = (
@@ -79,7 +76,9 @@ export default function LoginView() {
     <Box
       sx={{
         ...bgGradient({
-          color: alpha(theme.palette.background.default, 0.9),
+          direction: '329deg',
+          startColor: 'rgba(40,53,147,1) 35%',
+          endColor: 'rgba(255,255,255,1) 100%',
         }),
         height: 1,
       }}
