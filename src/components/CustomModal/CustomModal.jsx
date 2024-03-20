@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import { LoadingButton } from '@mui/lab';
 import MenuItem from '@mui/material/MenuItem';

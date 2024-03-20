@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 
-import Nav from './nav';
+import Nav from './Nav';
 import Main from './main';
 import Header from './Header/header';
 
