@@ -30,6 +30,7 @@ export default function CustomTableHead({
           { id: 'unit', label: 'Підрозділ' },
           { id: 'name', label: "Ім'я" },
           { id: 'role', label: 'Посада' },
+          { id: 'email', label: 'Пошта' },
           { id: '' },
         ]
       : [

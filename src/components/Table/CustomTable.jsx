@@ -89,6 +89,8 @@ export default function CustomTable({ data }) {
 
   const notFound = !dataFiltered.length && !!filterName;
 
+  console.log(data);
+
   return (
     <Card>
       <UserTableToolbar

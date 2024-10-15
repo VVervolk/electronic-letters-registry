@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Box } from '@mui/material';
 
-import Nav from './Nav';
 import Main from './main';
 import Header from './Header/header';
+import Nav from './nav';
 
 // ----------------------------------------------------------------------
 

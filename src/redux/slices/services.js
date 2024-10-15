@@ -27,6 +27,12 @@ export const contactsApi = createApi({
   }),
   keepUnusedDataFor: 5,
   endpoints: (builder) => ({
+    getUsers: builder.query({
+      query: () => ({
+        url: 'users',
+        method: 'GET',
+      }),
+    }),
     signUp: builder.mutation({
       query: (credentials) => ({
         url: 'users/signup',
@@ -106,4 +112,4 @@ export const {
   useUpdateContactMutation,
 } = contactsApi;
 
-export const { useGetContactsQuery, useGetCurrentUserQuery } = contactsApi;
+export const { useGetContactsQuery, useGetCurrentUserQuery, useGetUsersQuery } = contactsApi;
