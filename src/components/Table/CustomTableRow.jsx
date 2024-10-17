@@ -19,7 +19,7 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function CustomTableRow({ selected, handleClick, props }) {
-  const { firstName, lastName, unit, userType, email } = props;
+  const { firstName, lastName, unit, position, email } = props;
 
   const [open, setOpen] = useState(null);
 
@@ -45,7 +45,7 @@ export default function CustomTableRow({ selected, handleClick, props }) {
 
         <TableCell padding="none">{`${firstName} ${lastName}`}</TableCell>
 
-        <TableCell padding="none">{userType}</TableCell>
+        <TableCell padding="none">{position}</TableCell>
         <TableCell padding="none">{email}</TableCell>
       </TableRow>
 
