@@ -11,17 +11,16 @@ import { AppView } from 'src/sections/overview/view';
 
 export default function AppPage() {
   const units = useSelector(getUnits);
-  const { data, isSuccess } = useGetUnitsQuery(undefined, {
-    skip: !!units, // Пропускаем запрос, если units уже загружены
-    refetchOnMountOrArgChange: false, // Запрос не выполняется заново при монтировании
+  const { data } = useGetUnitsQuery(undefined, {
+    refetchOnMountOrArgChange: false,
   });
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isSuccess && !units) {
+    if (!units.length) {
       dispatch(setUnits(data));
     }
-  }, [isSuccess, units, data]);
+  }, [units, data]);
 
   return (
     <>

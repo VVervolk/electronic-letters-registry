@@ -83,14 +83,18 @@ export const contactsApi = createApi({
         toast.error('Oops, something went wrong!', toastOptions);
       },
     }),
-    addContact: builder.mutation({
+    addUser: builder.mutation({
       query: (credentials) => ({
-        url: 'contacts',
+        url: 'users',
         method: 'POST',
         body: credentials,
       }),
-      transformErrorResponse: () => {
-        toast.error('Oops, something went wrong!', toastOptions);
+      transformErrorResponse: ({ status }) => {
+        if (status === 409) {
+          toast.error('Поштова скринька вже зареєстрована!', toastOptions);
+        } else {
+          toast.error('Oops, something went wrong!', toastOptions);
+        }
       },
     }),
     deleteContact: builder.mutation({
@@ -113,7 +117,7 @@ export const {
   useSignUpMutation,
   useLogInMutation,
   useLogOutMutation,
-  useAddContactMutation,
+  useAddUserMutation,
   useDeleteContactMutation,
   useUpdateContactMutation,
 } = contactsApi;
