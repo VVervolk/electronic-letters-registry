@@ -15,10 +15,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import dateFormatter from 'src/helpers/dateFormatter';
 
 import Iconify from 'src/components/iconify';
+import { Button } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-export default function CustomTableRow({ selected, handleClick, props }) {
+export default function CustomTableRow({ selected, handleClick, needCheckbox, props }) {
   const { firstName, lastName, unit, position, email } = props;
 
   const [open, setOpen] = useState(null);
@@ -34,21 +35,67 @@ export default function CustomTableRow({ selected, handleClick, props }) {
   return (
     <>
       <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
-        <TableCell padding="checkbox">
+        <TableCell
+          sx={{
+            display: needCheckbox,
+          }}
+          padding="checkbox"
+        >
           <Checkbox disableRipple checked={selected} onChange={handleClick} />
         </TableCell>
-        <TableCell padding="none">
-          <Typography variant="subtitle2" noWrap>
-            {unit}
-          </Typography>
+        <TableCell
+          align="center"
+          sx={{
+            padding: '16px 24px',
+          }}
+        >
+          {unit}
         </TableCell>
 
-        <TableCell padding="none">{`${firstName} ${lastName}`}</TableCell>
+        <TableCell
+          align="center"
+          sx={{
+            padding: '16px 24px',
+          }}
+        >{`${firstName} ${lastName}`}</TableCell>
 
-        <TableCell padding="none">{position}</TableCell>
-        <TableCell padding="none">{email}</TableCell>
+        <TableCell
+          align="center"
+          sx={{
+            padding: '16px 24px',
+          }}
+        >
+          {position}
+        </TableCell>
+        <TableCell
+          align="center"
+          sx={{
+            padding: '16px 24px',
+          }}
+        >
+          {email}
+        </TableCell>
+        <TableCell
+          align="center"
+          sx={{
+            padding: '16px 24px',
+          }}
+        >
+          <Button
+            sx={{
+              ':hover': {
+                backgroundColor: 'red',
+              },
+            }}
+          >
+            <MoreVertIcon
+              sx={{
+                color: '#212B36',
+              }}
+            />
+          </Button>
+        </TableCell>
       </TableRow>
-
       <Popover
         open={!!open}
         anchorEl={open}

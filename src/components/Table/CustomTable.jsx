@@ -7,8 +7,6 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
-import { usePathname } from 'src/routes/hooks';
-
 import Scrollbar from 'src/components/scrollbar';
 import TableNoData from 'src/components/Table/TableNoData';
 import TableEmptyRows from 'src/components/Table/TableEmptyRows';
@@ -18,8 +16,7 @@ import CustomTableHead from 'src/components/Table/CustomTableHead';
 import UserTableToolbar from 'src/sections/user/user-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from 'src/sections/user/utils';
 
-export default function CustomTable({ data }) {
-  const url = usePathname();
+export default function CustomTable({ data, headLabel, firstRowsPerPage, rowsPerPageOptions }) {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -30,7 +27,8 @@ export default function CustomTable({ data }) {
 
   const [filterName, setFilterName] = useState('');
 
-  const [rowsPerPage, setRowsPerPage] = useState(url === '/user' ? 5 : 25);
+  const [rowsPerPage, setRowsPerPage] = useState(firstRowsPerPage);
+  // const [rowsPerPage, setRowsPerPage] = useState(url === '/user' ? 5 : 25);
 
   const handleSort = (event, id) => {
     const isAsc = orderBy === id && order === 'asc';
@@ -49,22 +47,16 @@ export default function CustomTable({ data }) {
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
+  const handleClick = (event, row) => {
+    setSelected((prevSelected) => {
+      const isSelected = prevSelected.includes(row);
+
+      if (isSelected) {
+        return prevSelected.filter((item) => item !== row);
+      } else {
+        return [...prevSelected, row];
+      }
+    });
   };
 
   const handleChangePage = (event, newPage) => {
@@ -101,13 +93,14 @@ export default function CustomTable({ data }) {
         <TableContainer sx={{ overflow: 'unset' }}>
           <Table sx={{ minWidth: 800 }}>
             <CustomTableHead
+              needCheckbox={'none'}
               order={order}
               orderBy={orderBy}
               rowCount={data.length}
               numSelected={selected.length}
               onRequestSort={handleSort}
               onSelectAllClick={handleSelectAllClick}
-              url={url}
+              headLabel={headLabel}
             />
             <TableBody>
               {dataFiltered
@@ -115,9 +108,10 @@ export default function CustomTable({ data }) {
                 .map((row) => (
                   <CustomTableRow
                     key={row.id}
+                    needCheckbox={'none'}
                     props={row}
-                    selected={selected.indexOf(row.name) !== -1}
-                    handleClick={(event) => handleClick(event, row.name)}
+                    selected={selected.indexOf(row) !== -1}
+                    handleClick={(event) => handleClick(event, row)}
                   />
                 ))}
 
@@ -135,7 +129,8 @@ export default function CustomTable({ data }) {
         count={data.length}
         rowsPerPage={rowsPerPage}
         onPageChange={handleChangePage}
-        rowsPerPageOptions={url === '/user' ? [5, 10, 25] : [25, 50, 100]}
+        rowsPerPageOptions={rowsPerPageOptions}
+        // rowsPerPageOptions={url === '/user' ? [5, 10, 25] : [25, 50, 100]}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Card>

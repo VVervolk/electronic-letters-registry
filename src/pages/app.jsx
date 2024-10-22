@@ -17,7 +17,7 @@ export default function AppPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!units.length) {
+    if (!units || !units.length) {
       dispatch(setUnits(data));
     }
   }, [units, data]);

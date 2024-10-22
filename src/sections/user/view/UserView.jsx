@@ -42,11 +42,27 @@ export default function UserView() {
     return newUser;
   }
 
+  const headLabel = [
+    { id: 'unit', label: 'Підрозділ' },
+    { id: 'name', label: "Ім'я" },
+    { id: 'role', label: 'Посада' },
+    { id: 'email', label: 'Пошта' },
+    { id: '' },
+  ];
   return (
     <Container>
       <HeaderOfTable name="Користувачі" action="Додати користувача" onClick={handleOpen} />
 
-      {isSuccess ? <CustomTable data={users} /> : <h2>fetch</h2>}
+      {isSuccess ? (
+        <CustomTable
+          headLabel={headLabel}
+          firstRowsPerPage={5}
+          rowsPerPageOptions={[5, 10, 25]}
+          data={users}
+        />
+      ) : (
+        <h2>fetch</h2>
+      )}
 
       <CustomModal open={open} onClose={handleClose} units={units} onSubmit={handleSubmit} />
     </Container>

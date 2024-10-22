@@ -28,36 +28,22 @@ export default function UserTableToolbar({ numSelected, filterName, onFilterName
         }),
       }}
     >
-      {numSelected > 0 ? (
-        <Typography component="div" variant="subtitle1">
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <OutlinedInput
-          value={filterName}
-          onChange={onFilterName}
-          placeholder="Пошук користувача..."
-          startAdornment={
-            <InputAdornment position="start">
-              <Iconify icon={SearchIcon} sx={{ color: 'text.disabled', width: 20, height: 20 }} />
-            </InputAdornment>
-          }
-        />
-      )}
+      <OutlinedInput
+        value={filterName}
+        onChange={onFilterName}
+        placeholder="Пошук користувача..."
+        startAdornment={
+          <InputAdornment position="start">
+            <Iconify icon={SearchIcon} sx={{ color: 'text.disabled', width: 20, height: 20 }} />
+          </InputAdornment>
+        }
+      />
 
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <Iconify icon={DeleteIcon} />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <Iconify icon={FilterListIcon} />
-          </IconButton>
-        </Tooltip>
-      )}
+      <Tooltip title="Filter list">
+        <IconButton>
+          <Iconify icon={FilterListIcon} />
+        </IconButton>
+      </Tooltip>
     </Toolbar>
   );
 }

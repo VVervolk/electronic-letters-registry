@@ -19,34 +19,41 @@ export default function CustomTableHead({
   numSelected,
   onRequestSort,
   onSelectAllClick,
+  headLabel,
+  needCheckbox,
 }) {
   const onSort = (property) => (event) => {
     onRequestSort(event, property);
   };
 
-  const headLabel =
-    url === '/user'
-      ? [
-          { id: 'unit', label: 'Підрозділ' },
-          { id: 'name', label: "Ім'я" },
-          { id: 'role', label: 'Посада' },
-          { id: 'email', label: 'Пошта' },
-          { id: '' },
-        ]
-      : [
-          { id: 'unit', label: 'Підрозділ' },
-          { id: 'number', label: 'Вих.номер' },
-          { id: 'date', label: 'Дата' },
-          { id: 'name', label: "Ім'я" },
-          { id: 'address', label: 'Адреса' },
-          { id: 'status', label: 'Статус' },
-          { id: '' },
-        ];
+  // const headLabel =
+  //   url === '/user'
+  //     ? [
+  //         { id: 'unit', label: 'Підрозділ' },
+  //         { id: 'name', label: "Ім'я" },
+  //         { id: 'role', label: 'Посада' },
+  //         { id: 'email', label: 'Пошта' },
+  //         { id: '' },
+  //       ]
+  //     : [
+  //         { id: 'unit', label: 'Підрозділ' },
+  //         { id: 'number', label: 'Вих.номер' },
+  //         { id: 'date', label: 'Дата' },
+  //         { id: 'name', label: "Ім'я" },
+  //         { id: 'address', label: 'Адреса' },
+  //         { id: 'status', label: 'Статус' },
+  //         { id: '' },
+  //       ];
 
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        <TableCell
+          sx={{
+            display: needCheckbox,
+          }}
+          padding="checkbox"
+        >
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
@@ -56,9 +63,9 @@ export default function CustomTableHead({
 
         {headLabel.map((headCell) => (
           <TableCell
-            padding={url === '/user' ? 'normal' : 'none'}
+            // padding={url === '/user' ? 'normal' : 'none'}
             key={headCell.id}
-            align={headCell.align || 'left'}
+            align={headCell.align || 'center'}
             sortDirection={orderBy === headCell.id ? order : false}
             sx={{ width: headCell.width, minWidth: headCell.minWidth }}
           >
